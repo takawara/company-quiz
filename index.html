@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Company Test - LTR</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="welcome-screen" class="card">
+        <img src="images/arlanxeo_logo.png" alt="Company Logo" class="logo">
+        <h1>Mer7ba bik assi Chifoor dialna</h1>
+        <p>Khtar logha dialk ya lmkallekh:</p>
+        
+        <div class="flags-container">
+            <div class="flag-item" onclick="selectLang('en', this)">
+                <img src="https://flagcdn.com/w80/us.png" alt="English">
+                <p>English</p>
+            </div>
+            <div class="flag-item" onclick="selectLang('nl', this)">
+                <img src="https://flagcdn.com/w80/nl.png" alt="Dutch">
+                <p>Dutch</p>
+            </div>
+            <div class="flag-item" onclick="selectLang('fr', this)">
+                <img src="https://flagcdn.com/w80/fr.png" alt="French">
+                <p>French</p>
+            </div>
+            <div class="flag-item" onclick="selectLang('de', this)">
+                <img src="https://flagcdn.com/w80/de.png" alt="German">
+                <p>German</p>
+            </div>
+            <div class="flag-item" onclick="selectLang('pl', this)">
+                <img src="https://flagcdn.com/w80/pl.png" alt="Polish">
+                <p>Polish</p>
+            </div>
+        </div>
+
+        <button id="start-btn" class="btn-primary" style="display: none;" onclick="startTest()">Bda Test</button>
+    </div>
+
+    <div id="test-screen" class="card" style="display: none;">
+        <div class="video-wrapper">
+            <video id="main-video" controls onended="startQuiz()">
+                <source id="video-source" src="" type="video/mp4">
+            </video>
+        </div>
+
+<p style="margin-top: 15px; color: #555; font-weight: 500; font-size: 15px;">
+    ⚠️ Wa dak zaml, Tfarej f video kaml Bach ibano lik al As2ila.
+</p>
+
+        <div id="quiz-container" style="display: none;">
+            <div id="question-card">
+                </div>
+        </div>
+    </div>
+
+    <div id="result-screen" class="card" style="display: none;">
+        <div id="result-message"></div>
+        <button class="btn-primary" onclick="location.reload()">3awd men Lowel</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

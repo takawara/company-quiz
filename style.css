@@ -1,0 +1,100 @@
+body {
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    background-color: #f4f7f6;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    direction: ltr;
+}
+
+.card {
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    text-align: center;
+    width: 90%;
+    max-width: 650px;
+    
+    /* هاد السطر هو السر: كيمنع أي حاجة تخرج على الجناب ديال الكارط */
+    overflow: hidden; 
+    box-sizing: border-box; 
+}
+
+.video-wrapper video {
+    width: 100%;       /* الفيديو غايشغل 100% من عرض الكارط */
+    height: auto;      /* كيحافظ على أبعاد الفيديو باش ما يجيش مجبد */
+    border-radius: 12px;
+    display: block;    /* كيحيد واحد الفراغ صغير كيكون تحت الفيديو */
+    margin: 0 auto 25px auto;
+}
+
+.logo { max-width: 130px; margin-bottom: 20px; }
+
+/* Flags Layout */
+.flags-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin: 30px 0;
+}
+
+.flag-item {
+    cursor: pointer;
+    transition: all 0.3s;
+    padding: 15px;
+    border: 2px solid #eee;
+    border-radius: 12px;
+    width: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.flag-item:hover {
+    border-color: #007bff;
+    background: #f8f9fa;
+}
+
+.flag-item.active {
+    border-color: #007bff;
+    background: #e7f1ff;
+}
+
+.flag-item img { width: 60px; border-radius: 4px; }
+.flag-item p { margin-top: 8px; font-weight: 600; font-size: 14px; }
+
+/* Quiz Styles */
+#question-card { text-align: left; margin-top: 20px; }
+
+.option-btn {
+    display: block;
+    width: 100%;
+    padding: 12px 20px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    cursor: pointer;
+    text-align: left;
+    background: white;
+    font-size: 16px;
+    transition: 0.2s;
+}
+
+.option-btn:hover {
+    background: #f0f7ff;
+    border-color: #007bff;
+}
+
+.btn-primary {
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 12px 35px;
+    border-radius: 25px;
+    font-size: 18px;
+    cursor: pointer;
+}
