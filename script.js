@@ -2,6 +2,18 @@ let selectedLanguage = '';
 let currentQuestionIndex = 0;
 let userScore = 0;
 
+const uiTexts = {
+    'en': { startBtn: "Start Training →", videoHint: "⚠️ Please watch the video to the end to unlock the safety quiz.", retryBtn: "Try Again", passTitle: "Congratulations! 🎉", passMsg: "You have successfully passed the test and you are welcome to enter the ARLANXEO warehouse.", failTitle: "Try Again ❌", failMsg: "Minimum required score is 80%. Please watch the video carefully and try again.", scoreText: "Your Score:" },
+    'ar': { startBtn: "ابدأ التدريب ←", videoHint: "⚠️ يرجى مشاهدة الفيديو حتى النهاية لفتح اختبار السلامة.", retryBtn: "إعادة المحاولة", passTitle: "تهانينا! 🎉", passMsg: "لقد نجحت في الاختبار ومرحباً بك لدخول مستودع آلانكسيو.", failTitle: "حاول مرة أخرى ❌", failMsg: "الحد أدنى للنجاح هو 80%. يرجى مشاهدة الفيديو بعناية والمحاولة مرة أخرى.", scoreText: "نتيجتك:" },
+    'fr': { startBtn: "Démarrer la formation →", videoHint: "⚠️ Veuillez regarder la vidéo jusqu'à la fin pour débloquer le quiz.", retryBtn: "Réessayer", passTitle: "Félicitations ! 🎉", passMsg: "Vous avez réussi le test et vous êtes les bienvenus dans l'entrepôt ARLANXEO.", failTitle: "Réessayer ❌", failMsg: "Le score minimum requis est de 80%. Veuillez regarder la vidéo attentivement et réessayer.", scoreText: "Votre score :" },
+    'es': { startBtn: "Iniciar capacitación →", videoHint: "⚠️ Vea el video hasta el final para desbloquear el cuestionario.", retryBtn: "Intentar de nuevo", passTitle: "¡Felicitaciones! 🎉", passMsg: "Ha pasado la prueba con éxito y es bienvenido al almacén de ARLANXEO.", failTitle: "Intentar de nuevo ❌", failMsg: "La puntuación mínima requerida es del 80%. Vea el video con atención e inténtelo de nuevo.", scoreText: "Tu puntuación:" },
+    'nl': { startBtn: "Start Training →", videoHint: "⚠️ Bekijk de video tot het einde om de quiz te ontgrendelen.", retryBtn: "Opnieuw proberen", passTitle: "Gefeliciteerd! 🎉", passMsg: "U bent geslaagd voor de test en bent welkom in het magazijn van ARLANXEO.", failTitle: "Opnieuw proberen ❌", failMsg: "Minimaal vereiste score is 80%. Bekijk de video zorgvuldig en probeer het opnieuw.", scoreText: "Uw score:" },
+    'de': { startBtn: "Schulung starten →", videoHint: "⚠️ Bitte sehen Sie sich das Video bis zum Ende an, um das Quiz freizuschalten.", retryBtn: "Erneut versuchen", passTitle: "Herzlichen Glückwunsch! 🎉", passMsg: "Sie haben den Test bestanden und sind im ARLANXEO-Lager willkommen.", failTitle: "Erneut versuchen ❌", failMsg: "Die erforderliche Mindestpunktzahl beträgt 80%. Bitte sehen Sie sich das Video aufmerksam an und versuchen Sie es erneut.", scoreText: "Ihr Ergebnis:" },
+    'pl': { startBtn: "Rozpocznij szkolenie →", videoHint: "⚠️ Obejrzyj film do końca, aby odblokować quiz.", retryBtn: "Spróbuj ponownie", passTitle: "Gratulacje! 🎉", passMsg: "Zdałeś test i zapraszamy do magazynu ARLANXEO.", failTitle: "Spróbuj ponownie ❌", failMsg: "Minimalny wymagany wynik to 80%. Obejrzyj uważnie film i spróbuj ponownie.", scoreText: "Twój wynik:" },
+    'pt': { startBtn: "Iniciar Treinamento →", videoHint: "⚠️ Assista ao vídeo até o final para desbloquear o questionário.", retryBtn: "Tentar novamente", passTitle: "Parabéns! 🎉", passMsg: "Você passou no teste com sucesso e é bem-vindo ao armazém da ARLANXEO.", failTitle: "Tentar novamente ❌", failMsg: "A pontuação mínima exigida é de 80%. Assista ao vídeo com atenção e tente novamente.", scoreText: "Sua pontuação:" },
+    'zh': { startBtn: "开始培训 →", videoHint: "⚠️ 请观看视频直到结束以解锁安全测试。", retryBtn: "再试一次", passTitle: "恭喜！ 🎉", passMsg: "您已成功通过测试，欢迎进入 ARLANXEO 仓库。", failTitle: "再试一次 ❌", failMsg: "最低要求分数为 80%。请仔细观看视频并重试。", scoreText: "您的得分：" }
+};
+
 const translations = {
     'en': [
         { q: "What should you always wear?", options: ["Casual clothes", "Required PPE", "Nothing"], correct: 1 },
@@ -41,7 +53,7 @@ const translations = {
         { q: "L'empilage des matériaux doit suivre :", options: ["Procédures de l'entrepôt", "Hauteur du toit", "Au hasard"], correct: 0 },
         { q: "La vitesse maximale est de :", options: ["20 Km/h", "5 Km/h", "12 Km/h"], correct: 2 },
         { q: "Quel processus est utilisé pour charger/décharger ?", options: ["Voie rapide", "Processus LOTOTO", "Manuel uniquement"], correct: 1 },
-        { q: "Quand faut-il signaler un incident ?", options: ["Demain", "Immédiatement", "Jamais"], correct: 1 }
+        { q: "Quand faut-il signaler un incident ?", options: ["Demain", "Immédiatamente", "Jamais"], correct: 1 }
     ],
     'nl': [
         { q: "Wat moet u altijd dragen?", options: ["Casual kleding", "Vereiste PBM", "Niets"], correct: 1 },
@@ -99,7 +111,13 @@ function selectLang(lang, element) {
     selectedLanguage = lang;
     document.querySelectorAll('.flag-item').forEach(el => el.classList.remove('active'));
     element.classList.add('active');
-    document.getElementById('start-btn').style.display = 'inline-block';
+    
+    const startBtn = document.getElementById('start-btn');
+    startBtn.style.display = 'inline-block';
+    startBtn.innerText = uiTexts[lang].startBtn;
+    
+    document.getElementById('video-hint').innerText = uiTexts[lang].videoHint;
+    document.getElementById('retry-btn').innerText = uiTexts[lang].retryBtn;
 }
 
 function startTest() {
@@ -108,12 +126,17 @@ function startTest() {
     video.load();
     document.getElementById('welcome-screen').style.display = 'none';
     document.getElementById('test-screen').style.display = 'block';
-    video.play().catch(e => console.log("Play blocked"));
+    
+    // Play video after loading
+    video.play().catch(e => console.log("Auto-play blocked, user must click play."));
 }
 
 function startQuiz() {
+    console.log("Video ended, opening quiz...");
     document.getElementById('quiz-container').style.display = 'block';
     document.getElementById('video-hint').style.display = 'none'; 
+    currentQuestionIndex = 0; // Reset index
+    userScore = 0; // Reset score
     showQuestion();
 }
 
@@ -151,20 +174,21 @@ function showResult() {
     const percent = Math.round((userScore / currentQuestions.length) * 100);
     const msg = document.getElementById('result-message');
     const retryBtn = document.getElementById('retry-btn');
+    const ui = uiTexts[selectedLanguage]; 
     
     if (percent >= 80) {
         msg.innerHTML = `
-            <h2 style="color:#28a745;">Congratulations! 🎉</h2>
-            <p style="font-size: 1.2rem; margin: 15px 0;">You have successfully passed the test and you are welcome to enter the <strong>ARLANXEO</strong> warehouse.</p>
-            <p>Your Score: <strong>${percent}%</strong></p>
+            <h2 style="color:#28a745;">${ui.passTitle}</h2>
+            <p style="font-size: 1.2rem; margin: 15px 0;">${ui.passMsg}</p>
+            <p>${ui.scoreText} <strong>${percent}%</strong></p>
         `;
-        retryBtn.style.display = 'none'; // إخفاء الزر عند النجاح
+        retryBtn.style.display = 'none';
     } else {
         msg.innerHTML = `
-            <h2 style="color:#dc3545;">Try Again ❌</h2>
-            <p>Your score: <strong>${percent}%</strong></p>
-            <p>Minimum required score is 80%. Please watch the video carefully and try again.</p>
+            <h2 style="color:#dc3545;">${ui.failTitle}</h2>
+            <p style="margin: 10px 0;">${ui.scoreText} <strong>${percent}%</strong></p>
+            <p>${ui.failMsg}</p>
         `;
-        retryBtn.style.display = 'inline-block'; // إظهار الزر عند الرسوب
+        retryBtn.style.display = 'inline-block';
     }
 }
