@@ -11,11 +11,11 @@
     <div id="welcome-screen" class="card">
         <img src="images/arlanxeo_logo.png" alt="Company Logo" class="logo">
         <h1>Welcome to ARLANXEO</h1>
-        <p>Select your language to start:</p>
+        <p>Please select your preferred language to start:</p>
         
         <div class="flags-container">
             <div class="flag-item" onclick="selectLang('en', this)">
-                <img src="https://flagcdn.com/w80/us.png" alt="English">
+                <img src="https://flagcdn.com/w80/gb.png" alt="English">
                 <p>English</p>
             </div>
             <div class="flag-item" onclick="selectLang('nl', this)">
@@ -38,24 +38,21 @@
                 <img src="https://flagcdn.com/w80/br.png" alt="Brazil">
                 <p>Portuguese</p>
             </div>
-
             <div class="flag-item" onclick="selectLang('zh', this)">
                 <img src="https://flagcdn.com/w80/cn.png" alt="China">
                 <p>Chinese</p>
             </div>
-            
             <div class="flag-item" onclick="selectLang('ar', this)">
                <img src="https://flagcdn.com/w80/sa.png" alt="Arabic">
                <p>Arabic</p>
             </div>
-
             <div class="flag-item" onclick="selectLang('es', this)">
               <img src="https://flagcdn.com/w80/es.png" alt="Spanish">
               <p>Spanish</p>
             </div>
         </div>
 
-        <button id="start-btn" class="btn-primary" style="display: none;" onclick="startTest()">Start Now →</button>
+        <button id="start-btn" class="btn-primary" style="display: none;" onclick="startTest()">Start Training →</button>
     </div>
 
     <div id="test-screen" class="card" style="display: none;">
@@ -65,19 +62,18 @@
             </video>
         </div>
 
-<p style="margin-top: 15px; color: #555; font-weight: 500; font-size: 15px;">
-    ⚠️ Complete the video to start the safety quiz.
-</p>
+        <p id="video-hint" style="margin-top: 15px; color: #d9534f; font-weight: 600; font-size: 15px;">
+            ⚠️ Please watch the video to the end to unlock the safety quiz.
+        </p>
 
         <div id="quiz-container" style="display: none;">
-            <div id="question-card">
-                </div>
+            <div id="question-card"></div>
         </div>
     </div>
 
     <div id="result-screen" class="card" style="display: none;">
         <div id="result-message"></div>
-        <button class="btn-primary" onclick="location.reload()">Try Again</button>
+        <button id="retry-btn" class="btn-primary" onclick="location.reload()">Try Again</button>
     </div>
 
     <script src="script.js"></script>
