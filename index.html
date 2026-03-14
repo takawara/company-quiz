@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Company Test - LTR</title>
+    <title>ARLANXEO | Supply Chain Safety Training</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <div id="welcome-screen" class="card">
         <img src="images/arlanxeo_logo.png" alt="Company Logo" class="logo">
-        <h1>Mer7ba bik assi Chifoor dialna</h1>
-        <p>Khtar logha dialk ya lmkallekh:</p>
+        <h1>Welcome to ARLANXEO</h1>
+        <p>Select your language to start:</p>
         
         <div class="flags-container">
             <div class="flag-item" onclick="selectLang('en', this)">
@@ -55,7 +55,7 @@
             </div>
         </div>
 
-        <button id="start-btn" class="btn-primary" style="display: none;" onclick="startTest()">Bda Test</button>
+        <button id="start-btn" class="btn-primary" style="display: none;" onclick="startTest()">Start Now →</button>
     </div>
 
     <div id="test-screen" class="card" style="display: none;">
@@ -66,7 +66,7 @@
         </div>
 
 <p style="margin-top: 15px; color: #555; font-weight: 500; font-size: 15px;">
-    ⚠️ Wa dak zaml, Tfarej f video kaml Bach ibano lik al As2ila.
+    ⚠️ Complete the video to start the safety quiz.
 </p>
 
         <div id="quiz-container" style="display: none;">
@@ -77,7 +77,7 @@
 
     <div id="result-screen" class="card" style="display: none;">
         <div id="result-message"></div>
-        <button class="btn-primary" onclick="location.reload()">3awd men Lowel</button>
+        <button class="btn-primary" onclick="location.reload()">Try Again</button>
     </div>
 
     <script src="script.js"></script>
