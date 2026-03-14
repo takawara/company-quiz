@@ -2,7 +2,6 @@ let selectedLanguage = '';
 let currentQuestionIndex = 0;
 let userScore = 0;
 
-// قاموس الأسئلة بـ 9 لغات
 const translations = {
     'en': [
         { q: "What should you always wear?", options: ["Casual clothes", "Required PPE", "Nothing"], correct: 1 },
@@ -114,7 +113,7 @@ function startTest() {
 
 function startQuiz() {
     document.getElementById('quiz-container').style.display = 'block';
-    document.querySelector('#test-screen p').style.display = 'none'; // إخفاء جملة التحذير
+    document.getElementById('video-hint').style.display = 'none'; 
     showQuestion();
 }
 
@@ -147,13 +146,25 @@ function submitAnswer(index) {
 function showResult() {
     document.getElementById('test-screen').style.display = 'none';
     document.getElementById('result-screen').style.display = 'block';
+    
     const currentQuestions = translations[selectedLanguage];
     const percent = Math.round((userScore / currentQuestions.length) * 100);
     const msg = document.getElementById('result-message');
+    const retryBtn = document.getElementById('retry-btn');
     
     if (percent >= 80) {
-        msg.innerHTML = `<h2 style="color:green">Congratulations 🥳 you passed the test and you are welcome to enter the warehouse</h2><p>You passed with ${percent}%</p>`;
+        msg.innerHTML = `
+            <h2 style="color:#28a745;">Congratulations! 🎉</h2>
+            <p style="font-size: 1.2rem; margin: 15px 0;">You have successfully passed the test and you are welcome to enter the <strong>ARLANXEO</strong> warehouse.</p>
+            <p>Your Score: <strong>${percent}%</strong></p>
+        `;
+        retryBtn.style.display = 'none'; // إخفاء الزر عند النجاح
     } else {
-        msg.innerHTML = `<h2 style="color:red">Try Again ❌</h2><p>Your score: ${percent}% (Minimum 80% required)</p>`;
+        msg.innerHTML = `
+            <h2 style="color:#dc3545;">Try Again ❌</h2>
+            <p>Your score: <strong>${percent}%</strong></p>
+            <p>Minimum required score is 80%. Please watch the video carefully and try again.</p>
+        `;
+        retryBtn.style.display = 'inline-block'; // إظهار الزر عند الرسوب
     }
 }
