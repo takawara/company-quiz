@@ -152,7 +152,7 @@ function showResult() {
     const msg = document.getElementById('result-message');
     
     if (percent >= 80) {
-        msg.innerHTML = `<h2 style="color:green">Welcome! 🎉</h2><p>You passed with ${percent}%</p>`;
+        msg.innerHTML = `<h2 style="color:green">Congratulations 🥳 you passed the test and you are welcome to enter the warehouse</h2><p>You passed with ${percent}%</p>`;
     } else {
         msg.innerHTML = `<h2 style="color:red">Try Again ❌</h2><p>Your score: ${percent}% (Minimum 80% required)</p>`;
     }
